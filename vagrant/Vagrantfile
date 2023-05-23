@@ -8,7 +8,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "2048"
+    vb.memory = "3065"
   end
 
   config.vm.provision :docker
@@ -18,5 +18,6 @@ Vagrant.configure("2") do |config|
     ci.vm.hostname = "ciserver"
     ci.vm.provision :file, source:"../docker/docker-compose.ci.yml", destination:"docker-compose.yml"
     ci.vm.provision :docker_compose, yml:"/home/vagrant/docker-compose.yml", run: "always"
+    ci.vm.provision :shell, inline:"sudo chmod 777 /var/run/docker.sock"
   end
 end
