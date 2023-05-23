@@ -6,7 +6,7 @@
 cd vagrant
 vagrant up
 
-## Access tothe VM via SSH
+## Access to the VM via SSH
 vagrant ssh server-1
 
 ## Apply premissions changes
